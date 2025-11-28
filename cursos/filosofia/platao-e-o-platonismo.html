@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Platão e o Platonismo | Curso | Escola Immortalis</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --marrom-escuro: #4d1f15;
+      --marrom-meio: #6a2a1d;
+      --bege-claro: #f4e8cf;
+      --bege-medio: #e2d0a7;
+      --bege-card: #fdf7eb;
+      --verde: #365c3b;
+      --verde-escuro: #26412a;
+      --texto: #222222;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Lato", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--marrom-escuro);
+      color: var(--texto);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* HEADER */
+    header {
+      background-color: var(--marrom-escuro);
+      color: #fff;
+      border-bottom: 3px solid var(--bege-medio);
+    }
+
+    .top-bar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.8rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 3px solid var(--bege-medio);
+      background-color: #fff;
+      background-image: url("../../img/logo.png");
+      background-position: center;
+      background-size: cover;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      font-family: "Playfair Display", serif;
+    }
+
+    .brand-text small {
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--bege-medio);
+    }
+
+    .brand-text span {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      position: relative;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.5rem;
+      list-style: none;
+    }
+
+    .nav-links li a {
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      background: linear-gradient(to bottom, #8a1f1f, #5d1414);
+      border: 1px solid #f0e3c5;
+      color: #f9f4e8;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .nav-links li a:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      background: linear-gradient(to bottom, #a12323, #6b1515);
+    }
+
+    .nav-links li a.active {
+      background: linear-gradient(to bottom, #26542f, #1b3d21);
+      border-color: #d2e0c6;
+    }
+
+    .user-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid #f0e3c5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      background-color: #345035;
+      color: #f9f4e8;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      border: 1px solid #f0e3c5;
+      padding: 5px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background-color: #f0e3c5;
+    }
+
+    @media (max-width: 640px) {
+      .menu-toggle { display: flex; }
+      .nav-links {
+        position: absolute;
+        top: 110%;
+        right: 0;
+        flex-direction: column;
+        background-color: #3c1810;
+        padding: 0.75rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+        display: none;
+      }
+      .nav-links.show { display: flex; }
+    }
+
+    /* HERO SIMPLES */
+    .hero-curso {
+      background-color: var(--bege-claro);
+      padding: 1.8rem 1rem 1.2rem;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      font-size: 0.85rem;
+      margin-bottom: 0.6rem;
+      color: #6a5a3a;
+    }
+
+    .breadcrumb a {
+      border-bottom: 1px solid transparent;
+    }
+
+    .breadcrumb a:hover {
+      border-bottom-color: #6a5a3a;
+    }
+
+    .hero-titulo {
+      font-family: "Playfair Display", serif;
+      font-size: 2rem;
+      color: var(--marrom-meio);
+      margin-bottom: 0.3rem;
+    }
+
+    .hero-subtitulo {
+      font-size: 0.96rem;
+      color: #4b3a24;
+      max-width: 700px;
+      line-height: 1.6;
+    }
+
+    /* MAIN – CARD DO CURSO */
+    main {
+      background-color: var(--bege-claro);
+      padding: 2rem 1rem 3rem;
+    }
+
+    .curso-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .card-curso-player {
+      background-color: var(--bege-card);
+      border-radius: 22px;
+      padding: 1.5rem;
+      border: 1px solid var(--bege-medio);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+      color: var(--texto);
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.1fr);
+      gap: 1.5rem;
+    }
+
+    /* ESQUERDA: PLAYER */
+    .badge-playlist {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: linear-gradient(to right, var(--verde), var(--verde-escuro));
+      color: #f6f0dd;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      margin-bottom: 0.8rem;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background-color: #d1f0c8;
+    }
+
+    .player-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background-color: #000;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid #c7b08a;
+    }
+
+    .player-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .player-legenda {
+      margin-top: 0.7rem;
+      font-size: 0.88rem;
+      color: #5c5038;
+    }
+
+    .player-links {
+      margin-top: 0.4rem;
+      font-size: 0.85rem;
+      color: #5c5038;
+    }
+
+    .player-links a {
+      color: var(--verde-escuro);
+      text-decoration: underline;
+      text-decoration-style: dotted;
+    }
+
+    .player-links a:hover {
+      color: var(--marrom-meio);
+    }
+
+    /* DIREITA: LISTA DE AULAS */
+    .lista-panel {
+      background-color: #f7edd4;
+      border-radius: 18px;
+      padding: 1rem 1rem 1.1rem;
+      border: 1px solid #ddc393;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .lista-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .lista-header h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.1rem;
+      color: #3b241b;
+    }
+
+    .lista-header small {
+      font-size: 0.78rem;
+      color: #776649;
+    }
+
+    .lista-aulas {
+      list-style: none;
+      margin: 0.4rem 0 0;
+      padding: 0;
+      max-height: 320px;
+      overflow-y: auto;
+    }
+
+    .aula-item {
+      border-radius: 999px;
+      padding: 0.55rem 0.7rem;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.7rem;
+      background-color: transparent;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.07s ease;
+    }
+
+    .aula-item:hover {
+      background-color: #f2e0b8;
+      border-color: #d8bf90;
+      transform: translateY(-1px);
+    }
+
+    .aula-item.ativa {
+      background: linear-gradient(to right, var(--verde), var(--verde-escuro));
+      border-color: transparent;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35);
+    }
+
+    .aula-esq {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      min-width: 0;
+    }
+
+    .aula-numero {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      border: 1px solid #b49b6e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: #3b241b;
+      flex-shrink: 0;
+      background: radial-gradient(circle at top, #f5e1b7, #f0d59b);
+    }
+
+    .aula-item.ativa .aula-numero {
+      background: #f7f0de;
+      color: var(--verde-escuro);
+      border-color: transparent;
+    }
+
+    .aula-textos {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      min-width: 0;
+    }
+
+    .aula-titulo {
+      font-size: 0.86rem;
+      color: #3b241b;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .aula-meta {
+      font-size: 0.76rem;
+      color: #7b6a51;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .aula-item.ativa .aula-titulo,
+    .aula-item.ativa .aula-meta {
+      color: #faf5e7;
+    }
+
+    .aula-duracao {
+      font-size: 0.8rem;
+      color: #544633;
+      flex-shrink: 0;
+    }
+
+    .aula-item.ativa .aula-duracao {
+      color: #fdf7eb;
+    }
+
+    .lista-rodape {
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid #ddc393;
+      font-size: 0.8rem;
+      color: #7a6a4e;
+    }
+
+    .lista-rodape strong {
+      color: #4b3a24;
+    }
+
+    @media (max-width: 960px) {
+      .card-curso-player {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .card-curso-player {
+        padding: 1.1rem;
+      }
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--marrom-escuro);
+      color: #f6e6c6;
+      padding: 1.5rem 1rem 2rem;
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: center;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-links a {
+      border-bottom: 1px solid transparent;
+      padding-bottom: 1px;
+    }
+
+    .footer-links a:hover {
+      border-bottom-color: #f6e6c6;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="top-bar">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true"></div>
+        <div class="brand-text">
+          <small>Escola</small>
+          <span>Immortalis</span>
+        </div>
+      </div>
+
+      <nav>
+        <button class="menu-toggle" aria-label="Abrir menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="../../index.html">Início</a></li>
+          <li><a href="../../mini-aulas.html">Mini Aulas</a></li>
+          <li><a href="../../cursos.html" class="active">Cursos</a></li>
+          <li><a href="../../biblioteca.html">Biblioteca</a></li>
+          <li><a href="../../index.html#contato">Contato</a></li>
+        </ul>
+        <div class="user-icon"><span>👤</span></div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-curso">
+    <div class="hero-inner">
+      <div class="breadcrumb">
+        <a href="../../index.html">Início</a> &raquo;
+        <a href="../../cursos.html">Cursos</a> &raquo;
+        <a href="../../cursos-filosofia.html">Filosofia</a> &raquo;
+        Política Real e Honesta
+      </div>
+
+      <h1 class="hero-titulo">Platão e o Platonismo</h1>
+      <p class="hero-subtitulo">
+        Curso em vídeo com reflexões filosóficas e práticas sobre a vida
+        política, ética pública e participação responsável.
+      </p>
+    </div>
+  </section>
+
+  <!-- MAIN: PLAYER + LISTA -->
+  <main>
+    <div class="curso-container">
+      <section class="card-curso-player">
+        <!-- ESQUERDA: PLAYER -->
+        <div>
+          <div class="badge-playlist">
+            <span class="badge-dot"></span>
+            Playlist completa
+          </div>
+
+          <div class="player-wrapper">
+            <!-- PLAYER INICIAL (primeira aula do curso) -->
+            <!-- TROQUE VIDEO_ID_AULA1 PELO ID REAL DO VÍDEO -->
+            <iframe
+              id="curso-player"
+              src="https://www.youtube.com/embed/i4QBI5XxSgk?rel=0"
+              title="Player do curso Política Real e Honesta"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <p class="player-legenda">
+            Clique em uma aula na lista ao lado para assistir diretamente neste
+            player. A playlist completa também está disponível no YouTube.
+          </p>
+
+          <p class="player-links">
+            Ver playlist completa no YouTube:
+            <!-- TROCAR PLAYLIST_ID PELO ID REAL DA PLAYLIST -->
+            <a href="https://www.youtube.com/playlist?list=PLrOEqj4ng7UIdC3wPv1lYIqx7C9_elyxA" target="_blank" rel="noopener">
+              abrir playlist
+            </a>.
+          </p>
+        </div>
+
+        <!-- DIREITA: LISTA DE AULAS -->
+        <aside class="lista-panel">
+          <div class="lista-header">
+            <h2>Aulas do curso</h2>
+            <small>Selecione para assistir</small>
+          </div>
+
+          <ul class="lista-aulas" id="lista-aulas">
+            <!-- Cada item precisa de data-video-id com o ID do vídeo no YouTube -->
+
+            <li class="aula-item ativa" data-video-id="Wp_CqMGMjdzBmBmW">
+              <div class="aula-esq">
+                <div class="aula-numero">1</div>
+                <div class="aula-textos">
+                  <div class="aula-titulo">Aula 1 – Título da primeira aula</div>
+                  <div class="aula-meta">Turma 2025/1 · 01/03/2025</div>
+                </div>
+              </div>
+              <div class="aula-duracao">15 min</div>
+            </li>
+
+            <li class="aula-item" data-video-id="ie2VwJ1Nllx8z2A2">
+              <div class="aula-esq">
+                <div class="aula-numero">2</div>
+                <div class="aula-textos">
+                  <div class="aula-titulo">Aula 2 – Segundo tema do curso</div>
+                  <div class="aula-meta">Turma 2025/1 · 08/03/2025</div>
+                </div>
+              </div>
+              <div class="aula-duracao">18 min</div>
+            </li>
+
+            <li class="aula-item" data-video-id="EFok8NLd30YEmeAt">
+              <div class="aula-esq">
+                <div class="aula-numero">3</div>
+                <div class="aula-textos">
+                  <div class="aula-titulo">Aula 3 – Terceiro tema do curso</div>
+                  <div class="aula-meta">Turma 2025/1 · 15/03/2025</div>
+                </div>
+              </div>
+              <div class="aula-duracao">20 min</div>
+            </li>
+
+            <li class="aula-item" data-video-id="TnAtTjdAfl3ef2DY">
+              <div class="aula-esq">
+                <div class="aula-numero">4</div>
+                <div class="aula-textos">
+                  <div class="aula-titulo">Aula 4 – Quarto tema do curso</div>
+                  <div class="aula-meta">Turma 2025/1 · 22/03/2025</div>
+                </div>
+              </div>
+              <div class="aula-duracao">17 min</div>
+            </li>
+
+            <li class="aula-item" data-video-id="XLEGv026wLUS-tdX">
+              <div class="aula-esq">
+                <div class="aula-numero">5</div>
+                <div class="aula-textos">
+                  <div class="aula-titulo">Aula 5 – Título da quinta aula</div>
+                  <div class="aula-meta">Turma 2025/1 · 29/03/2025</div>
+                </div>
+              </div>
+              <div class="aula-duracao">19 min</div>
+            </li>
+
+            <!-- Adicione mais li aqui, copiando o modelo acima, se tiver mais aulas -->
+          </ul>
+
+          <div class="lista-rodape">
+            Dica: para cada nova aula, copie um item da lista,
+            altere o número, o título, a data e o
+            <strong>data-video-id</strong> com o ID do vídeo no YouTube.
+          </div>
+        </aside>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="../../mini-aulas.html">Mini Aulas</a>
+        <a href="../../cursos.html">Cursos</a>
+        <a href="../../biblioteca.html">Biblioteca</a>
+        <a href="../../index.html#contato">Contato</a>
+      </div>
+      <p>&copy; <span id="ano-atual"></span> Escola de Filosofia &amp; Teologia Immortalis.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Ano no rodapé
+    document.getElementById("ano-atual").textContent = new Date().getFullYear();
+
+    // Menu mobile
+    const toggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+    if (toggle) {
+      toggle.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+      });
+    }
+
+    // Lógica da lista de aulas controlando o player
+    const player = document.getElementById("curso-player");
+    const itens = document.querySelectorAll(".aula-item");
+
+    itens.forEach(item => {
+      item.addEventListener("click", () => {
+        const videoId = item.getAttribute("data-video-id");
+        if (!videoId) return;
+
+        // Atualiza o iframe
+        player.src = "https://www.youtube.com/embed/" + videoId + "?rel=0";
+
+        // Atualiza o destaque da aula ativa
+        itens.forEach(i => i.classList.remove("ativa"));
+        item.classList.add("ativa");
+      });
+    });
+  </script>
+</body>
+</html>

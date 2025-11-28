@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Escola de Filosofia & Teologia Immortalis</title>
+
+  <!-- Fontes Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --marrom-escuro: #4d1f15;
+      --marrom-meio: #6a2a1d;
+      --bege-claro: #f4e8cf;
+      --bege-medio: #e2d0a7;
+      --verde: #365c3b;
+      --vermelho-titulo: #7f1b1b;
+      --texto: #222222;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Lato", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--marrom-escuro);
+      color: var(--texto);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ========== HEADER ========== */
+    header {
+      background-color: var(--marrom-escuro);
+      color: #fff;
+      border-bottom: 3px solid var(--bege-medio);
+    }
+
+    .top-bar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.8rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 3px solid var(--bege-medio);
+      background-color: #fff;
+      background-image: url("img/logo.png");
+      background-position: center;
+      background-size: cover;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      font-family: "Playfair Display", serif;
+    }
+
+    .brand-text small {
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--bege-medio);
+    }
+
+    .brand-text span {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.5rem;
+      list-style: none;
+    }
+
+    .nav-links li a {
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      background: linear-gradient(to bottom, #8a1f1f, #5d1414);
+      border: 1px solid #f0e3c5;
+      color: #f9f4e8;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .nav-links li a:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      background: linear-gradient(to bottom, #a12323, #6b1515);
+    }
+
+    .nav-links li a.active {
+      background: linear-gradient(to bottom, #26542f, #1b3d21);
+      border-color: #d2e0c6;
+    }
+
+    .user-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid #f0e3c5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      background-color: #345035;
+      color: #f9f4e8;
+    }
+
+    /* Botão menu mobile */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      border: 1px solid #f0e3c5;
+      padding: 5px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background-color: #f0e3c5;
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      position: relative;
+      background-image: url("img/banner-livros.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1rem;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(77, 31, 21, 0.65),
+        rgba(77, 31, 21, 0.8)
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 800px;
+      text-align: center;
+      color: #fdf7eb;
+    }
+
+    .hero-title-line1 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .hero-title-line2 {
+      font-family: "Playfair Display", serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-top: 0.5rem;
+    }
+
+    .hero-title-line3 {
+      font-family: "Crimson Text", serif;
+      font-size: 3rem;
+      font-style: italic;
+      color: #f6d3c5;
+      text-shadow: 0 3px 6px rgba(0, 0, 0, 0.6);
+      margin-top: 0.35rem;
+    }
+
+    .hero-buttons {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-button {
+      min-width: 220px;
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
+      border: 1px solid #f6e6c6;
+      font-size: 0.95rem;
+      background: rgba(244, 232, 207, 0.9);
+      color: #3b241b;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .hero-button:hover {
+      background: #f7edd8;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.45);
+    }
+
+    /* ========== SEÇÃO PENSAMENTOS ========== */
+    .pensamentos-section {
+      background-color: var(--bege-claro);
+      padding: 3rem 1rem;
+      border-top: 4px solid var(--marrom-meio);
+      border-bottom: 4px solid var(--marrom-meio);
+    }
+
+    .pensamentos-container {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .pensamentos-title {
+      font-family: "Playfair Display", serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--marrom-meio);
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 0.5rem;
+    }
+
+    .pensamentos-title::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
+      width: 90px;
+      height: 3px;
+      background-color: var(--verde);
+      border-radius: 999px;
+    }
+
+    .pensamento-texto {
+      margin-top: 2rem;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #265036;
+      position: relative;
+      padding: 0 2.5rem;
+    }
+
+    .aspas {
+      font-size: 3rem;
+      color: #a5935e;
+      position: absolute;
+      top: -15px;
+      left: 25px;
+    }
+
+    .pensamento-autor {
+      margin-top: 1.5rem;
+      font-style: italic;
+      color: #4f3b24;
+      font-size: 1rem;
+    }
+
+    .pensamento-navegacao {
+      margin-top: 1.8rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      font-size: 1.3rem;
+      color: #365c3b;
+    }
+
+    .pensamento-navegacao button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.6rem;
+      color: #365c3b;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      transition: background 0.15s ease, transform 0.1s ease;
+    }
+
+    .pensamento-navegacao button:hover {
+      background-color: rgba(54, 92, 59, 0.1);
+      transform: translateY(-1px);
+    }
+
+    /* vários pensamentos */
+    .pensamento-item {
+      display: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .pensamento-item.ativo {
+      display: block;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background-color: var(--marrom-escuro);
+      color: #f6e6c6;
+      padding: 1.5rem 1rem 2rem;
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: center;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-links a {
+      border-bottom: 1px solid transparent;
+      padding-bottom: 1px;
+    }
+
+    .footer-links a:hover {
+      border-bottom-color: #f6e6c6;
+    }
+
+    /* ===== CONTATO – CARTÃO ===== */
+
+.contato-section {
+  padding: 2.5rem 1rem;
+  background-color: #efe2c5;
+}
+
+.contato-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.contato-card {
+  background-color: var(--bege-claro);
+  border-radius: 18px;
+  border: 1px solid var(--bege-medio);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+  padding: 2rem 2.2rem;
+  text-align: center;
+}
+
+.contato-titulo {
+  font-family: "Playfair Display", serif;
+  font-size: 1.6rem;
+  margin-bottom: 0.8rem;
+  color: var(--marrom-meio);
+}
+
+.contato-texto {
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.7;
+  color: #4b3a24;
+  font-size: 0.98rem;
+}
+
+.contato-texto-secundario {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #6e5a3a;
+}
+
+/* BOTOES */
+
+.contato-botoes {
+  margin-top: 1.7rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-contato {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.75rem 1.6rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #ffffff;
+  border: 2px solid transparent;
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.25);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease,
+    background-color 0.18s ease;
+  will-change: transform, box-shadow, filter;
+}
+
+.btn-contato .btn-icone svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+/* WhatsApp verde */
+.btn-whatsapp {
+  background-color: #25d366;
+  border-color: #1ca152;
+}
+
+/* Telegram azul */
+.btn-telegram {
+  background-color: #0088cc;
+  border-color: #006fa3;
+}
+
+/* Hover animado */
+.btn-contato:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.35);
+  filter: brightness(1.05);
+}
+
+/* Foco acessível */
+.btn-contato:focus-visible {
+  outline: 3px solid #f6e6c6;
+  outline-offset: 2px;
+}
+
+/* ===== CONTATO – RESPONSIVO ===== */
+@media (max-width: 640px) {
+  .contato-card {
+    padding: 1.7rem 1.2rem;
+  }
+
+  .contato-botoes {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-contato {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+    /* ========== RESPONSIVIDADE ========== */
+    @media (max-width: 768px) {
+      nav {
+        position: relative;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 110%;
+        right: 0;
+        flex-direction: column;
+        background-color: #3c1810;
+        padding: 0.75rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+        display: none;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .hero {
+        min-height: 360px;
+        padding-top: 2.5rem;
+      }
+
+      .hero-title-line1 {
+        font-size: 1.4rem;
+      }
+
+      .hero-title-line2 {
+        font-size: 2rem;
+      }
+
+      .hero-title-line3 {
+        font-size: 2.4rem;
+      }
+
+      .pensamento-texto {
+        padding: 0 1.2rem;
+      }
+
+      .aspas {
+        left: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="top-bar">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true"></div>
+        <div class="brand-text">
+          <small>Escola</small>
+          <span>Immortalis</span>
+        </div>
+      </div>
+
+      <nav>
+        <button class="menu-toggle" aria-label="Abrir menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Início</a></li>
+          <li><a href="mini-aulas.html">Mini Aulas</a></li>
+          <li><a href="biblioteca.html">Biblioteca</a></li>
+          <li><a href="#professores">Professores</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+
+        <div class="user-icon" title="Área do aluno">
+          <span>👤</span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-title-line1">Escola de</div>
+      <div class="hero-title-line2">Filosofia &amp; Teologia</div>
+      <div class="hero-title-line3">Immortalis</div>
+
+      <div class="hero-buttons">
+        <a href="filosofia.html" class="hero-button">Mini Aulas de Filosofia</a>
+        <a href="teologia.html" class="hero-button">Mini Aulas de Teologia</a>
+        <a href="cursos.html" class="hero-button">Cursos Immortalis</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PENSAMENTOS ===== -->
+  <section class="pensamentos-section">
+    <div class="pensamentos-container">
+      <h2 class="pensamentos-title">Pensamentos</h2>
+
+      <div id="pensamento-lista">
+
+        <!-- PENSAMENTO 1 -->
+        <div class="pensamento-item ativo">
+          <div class="pensamento-texto">
+            <span class="aspas">❝</span>
+            <p>
+              A filosofia é a ação mais honesta que o ser humano pode ter consigo mesmo.
+              Quando se fala em honestidade intelectual, estamos a falar em compromisso
+              radical com a verdade, ainda que ela nos custe.
+            </p>
+          </div>
+          <div class="pensamento-autor">Autor ou Filósofo</div>
+        </div>
+
+        <!-- PENSAMENTO 2 -->
+        <div class="pensamento-item">
+          <div class="pensamento-texto">
+            <span class="aspas">❝</span>
+            <p>
+              Conhece-te a ti mesmo.
+            </p>
+          </div>
+          <div class="pensamento-autor">Sócrates</div>
+        </div>
+
+        <!-- PENSAMENTO 3 -->
+        <div class="pensamento-item">
+          <div class="pensamento-texto">
+            <span class="aspas">❝</span>
+            <p>
+              Nada há de mais real nesta existência do que o amor. 
+              Mesmo aquele que vive como se não amasse nada e ninguém,
+              irá até o fim da vida reconhecê-lo.
+            </p>
+          </div>
+          <div class="pensamento-autor">Valderi da Silva</div>
+        </div>
+
+        <!-- Adicione quantos quiser -->
+      </div>
+
+      <div class="pensamento-navegacao">
+        <button type="button" id="btnAnterior" aria-label="Pensamento anterior">⬅</button>
+        <button type="button" id="btnProximo" aria-label="Próximo pensamento">➡</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PLACEHOLDERS ===== -->
+  <section id="professores" style="padding: 3rem 1rem; background-color: #f6f0df;">
+    <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
+      <h2 style="font-family:'Playfair Display',serif; font-size:1.6rem; margin-bottom:1rem; color:var(--marrom-meio);">
+        Professores
+      </h2>
+      <p style="max-width:650px; margin:0 auto; line-height:1.7;">
+        Em breve: espaço para apresentação dos professores da Escola Immortalis,
+        com mini-biografias, formações e áreas de atuação em Filosofia e Teologia.
+      </p>
+    </div>
+  </section>
+
+<section id="contato" class="contato-section">
+  <div class="contato-container">
+    <div class="contato-card">
+      <h2 class="contato-titulo">Contato</h2>
+
+      <p class="contato-texto">
+        Para informações sobre mini-aulas, cursos e parcerias, entre em contato pelo e-mail:<br>
+        <strong>suporte@valderi.com.br</strong>
+      </p>
+
+      <p class="contato-texto contato-texto-secundario">
+        Se preferir, fale diretamente pelos canais abaixo:
+      </p>
+
+      <div class="contato-botoes">
+        <!-- WHATSAPP -->
+        <a href="https://wa.me/+5551996345360" target="_blank" class="btn-contato btn-whatsapp">
+          <span class="btn-icone" aria-hidden="true">
+            <!-- Ícone WhatsApp SVG -->
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" fill="currentColor" opacity="0.15" />
+              <path
+                fill="currentColor"
+                d="M12 4a8 8 0 0 0-6.86 11.88L4 20l4.24-1.1A8 8 0 1 0 12 4zm0-1.5a9.5 9.5 0 1 1 0 19 9.43 9.43 0 0 1-4.05-.92L4 20.5l1.02-3A9.47 9.47 0 0 1 12 2.5zm3.39 11.43c-.2-.1-1.17-.58-1.35-.64s-.3-.1-.43.1-.5.64-.62.77-.23.15-.43.05a6.51 6.51 0 0 1-3.18-2.78c-.24-.42.24-.39.68-1.28.08-.17 0-.31-.05-.42s-.43-1.03-.59-1.42-.31-.34-.43-.35h-.37a.72.72 0 0 0-.52.24 2.18 2.18 0 0 0-.68 1.62 3.76 3.76 0 0 0 .8 2.01 8.64 8.64 0 0 0 3.3 2.94 3.78 3.78 0 0 0 2.31.72 2 2 0 0 0 1.33-.62 1.64 1.64 0 0 0 .35-1.01c0-.19-.03-.31-.06-.34s-.16-.09-.36-.18z"
+              />
+            </svg>
+          </span>
+          <span>WhatsApp</span>
+        </a>
+
+        <!-- TELEGRAM -->
+        <a href="https://t.me/prof_valderi" target="_blank" class="btn-contato btn-telegram">
+          <span class="btn-icone" aria-hidden="true">
+            <!-- Ícone Telegram SVG -->
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" fill="currentColor" opacity="0.12" />
+              <path
+                fill="currentColor"
+                d="M18.8 7.1c-.2-.16-.46-.18-.74-.09L5.4 11.24c-.34.12-.55.33-.61.6-.07.3.08.6.39.75l2.9 1.33 1.1 3.54c.07.22.25.38.48.42h.08c.2 0 .4-.1.53-.26l1.57-1.95 2.96 2.16c.13.1.3.15.46.15.08 0 .16-.01.24-.04.23-.07.4-.25.47-.48l2.08-10.1c.07-.34-.02-.62-.24-.79zM16.9 9l-5.1 4.65c-.12.1-.2.25-.22.4l-.22 1.5-.73-2.32 6.27-4.23z"
+              />
+            </svg>
+          </span>
+          <span>Telegram</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="#professores">Professores</a>
+        <a href="cursos.html">Cursos</a>
+        <a href="#contato">Contato</a>
+        <a href="index.html">Início</a>
+      </div>
+      <p>
+        &copy; <span id="ano-atual"></span> Escola de Filosofia &amp; Teologia Immortalis.
+        Todos os direitos reservados.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Ano automático no rodapé
+      const spanAno = document.getElementById("ano-atual");
+      if (spanAno) {
+        spanAno.textContent = new Date().getFullYear();
+      }
+
+      // Menu mobile
+      const toggle = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+      if (toggle && navLinks) {
+        toggle.addEventListener("click", () => {
+          navLinks.classList.toggle("show");
+        });
+      }
+
+      // Carrossel de pensamentos
+      const pensamentos = document.querySelectorAll(".pensamento-item");
+      const btnAnterior = document.getElementById("btnAnterior");
+      const btnProximo = document.getElementById("btnProximo");
+
+      if (pensamentos.length && btnAnterior && btnProximo) {
+        let indiceAtual = 0;
+
+        function mostrarPensamento(i) {
+          pensamentos.forEach((p) => p.classList.remove("ativo"));
+          pensamentos[i].classList.add("ativo");
+        }
+
+        btnProximo.addEventListener("click", () => {
+          indiceAtual = (indiceAtual + 1) % pensamentos.length;
+          mostrarPensamento(indiceAtual);
+        });
+
+        btnAnterior.addEventListener("click", () => {
+          indiceAtual = (indiceAtual - 1 + pensamentos.length) % pensamentos.length;
+          mostrarPensamento(indiceAtual);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

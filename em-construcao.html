@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página em Construção | Escola Immortalis</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --marrom-escuro: #4d1f15;
+      --marrom-meio: #6a2a1d;
+      --bege-claro: #f4e8cf;
+      --bege-medio: #e2d0a7;
+      --bege-card: #fdf7eb;
+      --verde: #365c3b;
+      --texto: #222222;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Lato", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--marrom-escuro);
+      color: var(--texto);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* HEADER */
+    header {
+      background-color: var(--marrom-escuro);
+      color: #fff;
+      border-bottom: 3px solid var(--bege-medio);
+    }
+
+    .top-bar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.8rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 3px solid var(--bege-medio);
+      background-color: #fff;
+      background-image: url("img/logo.png");
+      background-position: center;
+      background-size: cover;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      font-family: "Playfair Display", serif;
+    }
+
+    .brand-text small {
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--bege-medio);
+    }
+
+    .brand-text span {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      position: relative;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.5rem;
+      list-style: none;
+    }
+
+    .nav-links li a {
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      background: linear-gradient(to bottom, #8a1f1f, #5d1414);
+      border: 1px solid #f0e3c5;
+      color: #f9f4e8;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .nav-links li a:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      background: linear-gradient(to bottom, #a12323, #6b1515);
+    }
+
+    .user-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid #f0e3c5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      background-color: #345035;
+      color: #f9f4e8;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      border: 1px solid #f0e3c5;
+      padding: 5px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background-color: #f0e3c5;
+    }
+
+    /* CONTEÚDO PRINCIPAL */
+    main {
+      flex: 1;
+      background-color: var(--bege-claro);
+      padding: 3rem 1rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .construcao-card {
+      max-width: 720px;
+      width: 100%;
+      background-color: var(--bege-card);
+      border-radius: 22px;
+      border: 1px solid var(--bege-medio);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
+      padding: 2.5rem 2.3rem;
+      text-align: center;
+    }
+
+    .construcao-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.9rem;
+      border-radius: 999px;
+      background-color: #f4d3a1;
+      border: 1px solid #d2b079;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #5b3b21;
+      margin-bottom: 1.1rem;
+    }
+
+    .construcao-badge span {
+      font-size: 1rem;
+    }
+
+    .construcao-titulo {
+      font-family: "Playfair Display", serif;
+      font-size: 1.9rem;
+      color: var(--marrom-meio);
+      margin-bottom: 0.6rem;
+    }
+
+    .construcao-subtitulo {
+      font-family: "Crimson Text", serif;
+      font-size: 1.15rem;
+      color: #4b3a24;
+      margin-bottom: 1.4rem;
+    }
+
+    .construcao-texto {
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: #5a4c34;
+      max-width: 560px;
+      margin: 0 auto 1.8rem;
+    }
+
+    .construcao-botoes {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    .btn-construcao {
+      padding: 0.7rem 1.6rem;
+      border-radius: 999px;
+      border: 1px solid #345035;
+      background-color: var(--verde);
+      color: #fdf7eb;
+      font-size: 0.95rem;
+      font-weight: 600;
+      box-shadow: 0 4px 9px rgba(0, 0, 0, 0.25);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+    }
+
+    .btn-construcao:hover {
+      background-color: #417749;
+      transform: translateY(-2px);
+      box-shadow: 0 7px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-secundario {
+      background-color: #f3e1b9;
+      border-color: #c8aa72;
+      color: #4b3a24;
+    }
+
+    .btn-secundario:hover {
+      background-color: #f7ebcf;
+    }
+
+    .btn-construcao svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .construcao-nota {
+      margin-top: 1.4rem;
+      font-size: 0.86rem;
+      color: #7a6b4e;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--marrom-escuro);
+      color: #f6e6c6;
+      padding: 1.3rem 1rem 1.8rem;
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 768px) {
+      nav {
+        position: relative;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 110%;
+        right: 0;
+        flex-direction: column;
+        background-color: #3c1810;
+        padding: 0.75rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+        display: none;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .construcao-card {
+        padding: 2rem 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="top-bar">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true"></div>
+        <div class="brand-text">
+          <small>Escola</small>
+          <span>Immortalis</span>
+        </div>
+      </div>
+
+      <nav>
+        <button class="menu-toggle" aria-label="Abrir menu">
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-links">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="mini-aulas.html">Mini Aulas</a></li>
+          <li><a href="cursos.html">Cursos</a></li>
+          <li><a href="biblioteca.html">Biblioteca</a></li>
+          <li><a href="#contato-pagina">Contato</a></li>
+        </ul>
+
+        <div class="user-icon"><span>👤</span></div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main>
+    <div class="construcao-card">
+      <div class="construcao-badge">
+        <span>⚒</span>
+        <span>em construção</span>
+      </div>
+
+      <h1 class="construcao-titulo">Página em construção</h1>
+      <p class="construcao-subtitulo">
+        Esta área da Escola Immortalis está sendo preparada com cuidado.
+      </p>
+
+      <p class="construcao-texto">
+        Em breve, este espaço reunirá conteúdos, cursos ou materiais de estudo
+        relacionados à formação filosófica e teológica. Estamos ajustando os
+        detalhes para que a experiência seja clara, simples e profunda.
+      </p>
+
+      <div class="construcao-botoes">
+        <a href="index.html" class="btn-construcao">
+          <!-- Ícone “voltar” -->
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M13.7 6.3a1 1 0 0 1 0 1.4L10.41 11H19a1 1 0 1 1 0 2h-8.59l3.3 3.3a1 1 0 0 1-1.42 1.4l-5-5a1 1 0 0 1 0-1.4l5-5a1 1 0 0 1 1.41 0z"/>
+          </svg>
+          <span>Voltar ao início</span>
+        </a>
+
+        <a href="mailto:suporte@valderi.com.br" class="btn-construcao btn-secundario">
+          <!-- Ícone “email” -->
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6zm2 0 6 4.5L18 6H6zm0 2.25V18h12V8.25l-6 4.5-6-4.5z"/>
+          </svg>
+          <span>Falar com a Escola</span>
+        </a>
+      </div>
+
+      <p class="construcao-nota" id="contato-pagina">
+        Dúvidas ou necessidade de acesso antecipado ao conteúdo desta área?
+        Escreva para <strong>suporte@valderi.com.br</strong>.
+      </p>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <p>&copy; <span id="ano-atual"></span> Escola de Filosofia &amp; Teologia Immortalis.</p>
+    </div>
+  </footer>
+
+  <script>
+    // ano no rodapé
+    const spanAno = document.getElementById("ano-atual");
+    if (spanAno) {
+      spanAno.textContent = new Date().getFullYear();
+    }
+
+    // menu mobile
+    const toggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+    if (toggle && navLinks) {
+      toggle.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+      });
+    }
+  </script>
+</body>
+</html>

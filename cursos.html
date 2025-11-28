@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cursos | Escola Immortalis</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --marrom-escuro: #4d1f15;
+      --marrom-meio: #6a2a1d;
+      --bege-claro: #f4e8cf;
+      --bege-medio: #e2d0a7;
+      --verde: #365c3b;
+      --texto: #222222;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Lato", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--marrom-escuro);
+      color: var(--texto);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* HEADER */
+    header {
+      background-color: var(--marrom-escuro);
+      color: #fff;
+      border-bottom: 3px solid var(--bege-medio);
+    }
+
+    .top-bar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.8rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 3px solid var(--bege-medio);
+      background-color: #fff;
+      background-image: url("img/logo.png");
+      background-position: center;
+      background-size: cover;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      font-family: "Playfair Display", serif;
+    }
+
+    .brand-text small {
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--bege-medio);
+    }
+
+    .brand-text span {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      position: relative;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.5rem;
+      list-style: none;
+    }
+
+    .nav-links li a {
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      background: linear-gradient(to bottom, #8a1f1f, #5d1414);
+      border: 1px solid #f0e3c5;
+      color: #f9f4e8;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .nav-links li a:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      background: linear-gradient(to bottom, #a12323, #6b1515);
+    }
+
+    .nav-links li a.active {
+      background: linear-gradient(to bottom, #26542f, #1b3d21);
+      border-color: #d2e0c6;
+    }
+
+    .user-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid #f0e3c5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      background-color: #345035;
+      color: #f9f4e8;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      border: 1px solid #f0e3c5;
+      padding: 5px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background-color: #f0e3c5;
+    }
+
+    /* HERO INTERNO */
+    .hero-interno {
+      background-image: url("img/banner-livros.jpg");
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      padding: 2.5rem 1rem 3.2rem;
+    }
+
+    .hero-interno::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(77, 31, 21, 0.8),
+        rgba(77, 31, 21, 0.95)
+      );
+    }
+
+    .hero-interno-conteudo {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+      color: #fdf7eb;
+    }
+
+    .breadcrumb {
+      font-size: 0.85rem;
+      margin-bottom: 0.8rem;
+      color: #f4e8cf;
+    }
+
+    .breadcrumb a {
+      border-bottom: 1px solid transparent;
+    }
+
+    .breadcrumb a:hover {
+      border-bottom-color: #f4e8cf;
+    }
+
+    .hero-interno-titulo {
+      font-family: "Playfair Display", serif;
+      font-size: 2.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-interno-sub {
+      font-family: "Crimson Text", serif;
+      font-size: 1.1rem;
+      max-width: 650px;
+      line-height: 1.6;
+      color: #f7e4c9;
+    }
+
+    .categorias-nav {
+      margin-top: 1.7rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .categorias-nav a {
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      border: 1px solid #f4e8cf;
+      color: #fdf7eb;
+      background-color: rgba(244, 232, 207, 0.1);
+      transition: background 0.15s ease, transform 0.1s ease;
+    }
+
+    .categorias-nav a:hover {
+      background-color: rgba(244, 232, 207, 0.3);
+      transform: translateY(-1px);
+    }
+    .titulo-link {
+        color: var(--marrom-meio);
+        background-color: #f1e1be;
+        padding: 4px 12px;
+        border-radius: 999px;
+        font-size: 1rem;
+        border: 1px solid #c9b07e;
+        transition: 0.15s ease;
+    }
+
+    .titulo-link:hover {
+        background-color: #f7ebcf;
+        color: #3b241b;
+        transform: translateY(-2px);
+        box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    }
+
+
+    /* MAIN */
+    main {
+      background-color: var(--bege-claro);
+      padding: 2.5rem 1rem 3rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .secao-categoria {
+      margin-bottom: 2.8rem;
+    }
+
+    .secao-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .secao-header h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.5rem;
+      color: var(--marrom-meio);
+    }
+
+    .secao-header span {
+      font-size: 0.85rem;
+      color: #6e5f43;
+    }
+
+    .grade-cursos {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card-curso {
+      background-color: #fdf7eb;
+      border-radius: 14px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
+      border: 1px solid #e2d0a7;
+      padding: 1rem 1rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-etiqueta {
+      position: absolute;
+      top: 0.7rem;
+      right: -3.2rem;
+      background-color: #365c3b;
+      color: #f7f0de;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 0.25rem 3.8rem;
+      transform: rotate(32deg);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    }
+
+    .card-titulo {
+      font-family: "Playfair Display", serif;
+      font-size: 1.1rem;
+      color: #3b241b;
+    }
+
+    .card-meta {
+      font-size: 0.8rem;
+      color: #7a6b52;
+    }
+
+    .card-descricao {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #463b2b;
+      flex: 1;
+    }
+
+    .card-extra {
+      font-size: 0.8rem;
+      color: #6b5c40;
+      margin-top: 0.2rem;
+    }
+
+    .card-botoes {
+      margin-top: 0.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .btn-primario,
+    .btn-secundario {
+      display: inline-block;
+      padding: 0.45rem 1rem;
+      font-size: 0.85rem;
+      border-radius: 999px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+    }
+
+    .btn-primario {
+      background-color: #365c3b;
+      border-color: #365c3b;
+      color: #f7f0de;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    }
+
+    .btn-primario:hover {
+      background-color: #417749;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-secundario {
+      background-color: #f1e1be;
+      border-color: #c9b07e;
+      color: #4b3a24;
+    }
+
+    .btn-secundario:hover {
+      background-color: #f7ebcf;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    }
+
+    .voltar-topo {
+      text-align: right;
+      margin-top: 0.7rem;
+      font-size: 0.8rem;
+    }
+
+    .voltar-topo a {
+      color: #365c3b;
+      border-bottom: 1px dotted #365c3b;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--marrom-escuro);
+      color: #f6e6c6;
+      padding: 1.5rem 1rem 2rem;
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: center;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-links a {
+      border-bottom: 1px solid transparent;
+      padding-bottom: 1px;
+    }
+
+    .footer-links a:hover {
+      border-bottom-color: #f6e6c6;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 900px) {
+      .grade-cursos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .menu-toggle { display: flex; }
+      .nav-links {
+        position: absolute;
+        top: 110%;
+        right: 0;
+        flex-direction: column;
+        background-color: #3c1810;
+        padding: 0.75rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+        display: none;
+      }
+      .nav-links.show { display: flex; }
+
+      .grade-cursos {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body id="topo">
+  <!-- HEADER -->
+  <header>
+    <div class="top-bar">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true"></div>
+        <div class="brand-text">
+          <small>Escola</small>
+          <span>Immortalis</span>
+        </div>
+      </div>
+
+      <nav>
+        <button class="menu-toggle" aria-label="Abrir menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="filosofia.html">Mini Aulas</a></li>
+          <li><a href="cursos.html" class="active">Cursos</a></li>
+          <li><a href="biblioteca.html">Biblioteca</a></li>
+          <li><a href="index.html#contato">Contato</a></li>
+        </ul>
+        <div class="user-icon"><span>👤</span></div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO INTERNO -->
+  <section class="hero-interno">
+    <div class="hero-interno-conteudo">
+      <div class="breadcrumb">
+        <a href="index.html">Início</a> &raquo; Cursos
+      </div>
+      <h1 class="hero-interno-titulo">Cursos Immortalis</h1>
+      <p class="hero-interno-sub">
+        Percursos formativos em Teologia, Filosofia, Cristianismo e temas diversos,
+        pensados para aprofundar o estudo e a experiência da fé e da razão.
+      </p>
+
+      <div class="categorias-nav">
+        <a href="#teologia">Cursos de Teologia</a>
+        <a href="#filosofia">Cursos de Filosofia</a>
+        <a href="#cristianismo">Cursos Cristianismo</a>
+        <a href="#diversos">Cursos Diversos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <main>
+    <div class="container">
+
+      <!-- TEOLOGIA -->
+      <section id="teologia" class="secao-categoria">
+        <div class="secao-header">
+            <h2>
+                <a href="em-construcao.html" class="titulo-link">
+                Cursos de Teologia →
+                </a>
+            </h2>
+            <span>Doutrina, Escritura, Trindade, Cristologia e mais.</span>
+        </div>
+
+
+        <div class="grade-cursos">
+          <article class="card-curso">
+            <div class="card-etiqueta">Indicado</div>
+            <h3 class="card-titulo">Teologia Básica I</h3>
+            <div class="card-meta">Carga horária: 20 aulas • Nível: Iniciante</div>
+            <p class="card-descricao">
+              Introdução à teologia como inteligência da fé. Percurso pelos temas
+              fundamentais: Revelação, Escritura, Trindade e Cristologia.
+            </p>
+            <div class="card-extra">Formato: vídeo-aulas + material em PDF.</div>
+            <div class="card-botoes">
+              <a href="#" class="btn-primario">Ver curso</a>
+              <a href="https://www.youtube.com/" target="_blank" class="btn-secundario">Ver playlist</a>
+            </div>
+          </article>
+
+          <article class="card-curso">
+            <h3 class="card-titulo">Introdução à Sagrada Escritura</h3>
+            <div class="card-meta">Carga horária: 12 aulas • Nível: Iniciante</div>
+            <p class="card-descricao">
+              Panorama geral da Bíblia, inspiração, cânon, gêneros literários e
+              princípios de leitura teológica.
+            </p>
+            <div class="card-extra">Indicado para grupos de estudo bíblico.</div>
+            <div class="card-botoes">
+              <a href="#" class="btn-primario">Ver curso</a>
+              <a href="https://www.youtube.com/" target="_blank" class="btn-secundario">Ver playlist</a>
+          </div>
+          </article>
+
+          <article class="card-curso">
+            <h3 class="card-titulo">Teologia da Graça</h3>
+            <div class="card-meta">Carga horária: 10 aulas • Nível: Intermediário</div>
+            <p class="card-descricao">
+              Estudo sobre graça, pecado, liberdade e salvação na tradição cristã,
+              com diálogo entre autores clássicos.
+            </p>
+            <div class="card-extra">Pré-requisito sugerido: Teologia Básica I.</div>
+            <div class="card-botoes">
+              <a href="#" class="btn-primario">Ver curso</a>
+              <a href="https://www.youtube.com/" target="_blank" class="btn-secundario">Ver playlist</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="voltar-topo"><a href="#topo">↑ Voltar ao topo</a></div>
+      </section>
+
+      <!-- FILOSOFIA -->
+      <section id="filosofia" class="secao-categoria">
+        <div class="secao-header">
+            <h2>
+                <a href="cursos-filosofia.html" class="titulo-link">
+                Cursos de Filosofia →
+                </a>
+            </h2>
+            <span>História da filosofia, ética e metafísica.</span>
+        </div>
+
+
+        <div class="grade-cursos">
+          <article class="card-curso">
+            <div class="card-etiqueta">Indicado</div>
+            <h3 class="card-titulo">Platão e o Platonismo</h3>
+            <div class="card-meta">Carga horária: 18 aulas • Nível: Iniciante</div>
+            <p class="card-descricao">
+              Dos pré-socráticos a Aristóteles: principais pensadores, textos e
+              problemas da filosofia grega.
+            </p>
+            <div class="card-extra">Ideal como base para outros cursos de filosofia.</div>
+            <div class="card-botoes">
+              <a href="cursos/filosofia/platao-e-o-platonismo.html" class="btn-primario">Ver curso</a>
+              <a href="cursos/filosofia/platao-e-o-platonismo.html" target="_blank" class="btn-secundario">Ver playlist</a>
+            </div>
+          </article>
+
+          <article class="card-curso">
+            <h3 class="card-titulo">É possível um Política real e honesta?</h3>
+            <div class="card-meta">Carga horária: 10 aulas • Nível: Intermediário</div>
+            <p class="card-descricao">
+              Estudo dos modelos éticos em Platão, Aristóteles e autores
+              posteriores, com diálogo com questões contemporâneas.
+            </p>
+            <div class="card-extra">Pode ser utilizado em cursos livres e TCC.</div>
+            <div class="card-botoes">
+              <a href="cursos/filosofia/politica-real-e-honesta.html" class="btn-primario">Ver curso</a>
+              <a href="cursos/filosofia/politica-real-e-honesta.html" target="_blank" class="btn-secundario">Ver playlist</a>
+            </div>
+          </article>
+
+          <article class="card-curso">
+            <h3 class="card-titulo">Fundamentos da Filosofia III</h3>
+            <div class="card-meta">Carga horária: 12 aulas • Nível: Intermediário</div>
+            <p class="card-descricao">
+              Ser, causa, substância, ato e potência: um percurso introdutório
+              pelos conceitos centrais da metafísica clássica.
+            </p>
+            <div class="card-extra">Recomendado para estudantes de filosofia e teologia.</div>
+            <div class="card-botoes">
+              <a href="cursos/filosofia/fundamentos-da-filosofia-III.html" class="btn-primario">Ver curso</a>
+              <a href="cursos/filosofia/fundamentos-da-filosofia-III.html" target="_blank" class="btn-secundario">Ver playlist</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="voltar-topo"><a href="#topo">↑ Voltar ao topo</a></div>
+      </section>
+
+      <!-- CRISTIANISMO -->
+      <section id="cristianismo" class="secao-categoria">
+        <div class="secao-header">
+            <h2>
+                <a href="em-construcao.html" class="titulo-link">
+                Cursos Cristianismo →
+                </a>
+            </h2>
+            <span>Catequese, espiritualidade e vida cristã.</span>
+        </div>
+
+
+        <div class="grade-cursos">
+          <article class="card-curso">
+            <div class="card-etiqueta">Indicado</div>
+            <h3 class="card-titulo">Introdução ao Cristianismo</h3>
+            <div class="card-meta">Carga horária: 16 aulas • Nível: Iniciante</div>
+            <p class="card-descricao">
+              Visão geral da fé cristã: credo, sacramentos, moral cristã e
+              oração. Pensado para iniciantes e grupos de catequese.
+            </p>
+            <div class="card-extra">Pode ser usado como curso preparatório para sacramentos.</div>
+            <div class="card-botoes">
+              <a href="#" class="btn-primario">Ver curso</a>
+              <a href="https://www.youtube.com/" target="_blank" class="btn-secundario">Ver playlist</a>
+            </div>
+          </article>
+
+          <article class="card-curso">
+            <h3 class="card-titulo">Espiritualidade Cristã</h3>
+            <div class="card-meta">Carga horária: 10 aulas • Nível: Iniciante</div>
+            <p class="card-descricao">
+              Temas clássicos da espiritualidade: oração, discernimento, vida
+              sacramental e virtudes cristãs.
+            </p>
+            <div class="card-extra">Ideal para retiros, grupos de oração e direção espiritual.</div>
+            <div class="card-botoes">
+              <a href="#" class="btn-primario">Ver curso</a>
+              <a href="https://www.youtube.com/" target="_blank" class="btn-secundario">Ver playlist</a>
+            </div>
+          </article>
+
+          <article class="card-curso">
+            <h3 class="card-titulo">História do Cristianismo</h3>
+            <div class="card-meta">Carga horária: 14 aulas • Nível: Intermediário</div>
+            <p class="card-descricao">
+              Dos primeiros séculos à atualidade: principais momentos, concílios
+              e figuras da história cristã.
+            </p>
+            <div class="card-extra">Pode servir como apoio para cursos de história da Igreja.</div>
+            <div class="card-botoes">
+              <a href="#" class="btn-primario">Ver curso</a>
+              <a href="https://www.youtube.com/" target="_blank" class="btn-secundario">Ver playlist</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="voltar-topo"><a href="#topo">↑ Voltar ao topo</a></div>
+      </section>
+
+      <!-- DIVERSOS -->
+      <section id="diversos" class="secao-categoria">
+        <div class="secao-header">
+            <h2>
+                <a href="em-construcao.html" class="titulo-link">
+                Cursos Diversos →
+                </a>
+            </h2>
+            <span>Temas complementares e interdisciplinares.</span>
+        </div>
+
+
+        <div class="grade-cursos">
+          <article class="card-curso">
+            <h3 class="card-titulo">Fé e Cultura Contemporânea</h3>
+            <div class="card-meta">Carga horária: 8 aulas • Nível: Intermediário</div>
+            <p class="card-descricao">
+              Diálogo entre fé cristã e desafios culturais atuais: secularização,
+              pluralismo religioso e ética pública.
+            </p>
+            <div class="card-extra">Recomendado para agentes pastorais e educadores.</div>
+            <div class="card-botoes">
+              <a href="#" class="btn-primario">Ver curso</a>
+              <a href="https://www.youtube.com/" target="_blank" class="btn-secundario">Ver playlist</a>
+            </div>
+          </article>
+
+          <article class="card-curso">
+            <h3 class="card-titulo">Introdução à Língua Grega do NT</h3>
+            <div class="card-meta">Carga horária: 12 aulas • Nível: Básico</div>
+            <p class="card-descricao">
+              Primeiros passos na leitura do grego do Novo Testamento: alfabeto,
+              vocabulário essencial e noções de gramática.
+            </p>
+            <div class="card-extra">Indicado para estudantes de Bíblia e pregadores.</div>
+            <div class="card-botoes">
+              <a href="#" class="btn-primario">Ver curso</a>
+              <a href="https://www.youtube.com/" target="_blank" class="btn-secundario">Ver playlist</a>
+            </div>
+          </article>
+
+          <article class="card-curso">
+            <h3 class="card-titulo">Humanidades e Educação</h3>
+            <div class="card-meta">Carga horária: 10 aulas • Nível: Livre</div>
+            <p class="card-descricao">
+              Reflexões sobre o papel das humanidades na educação e na formação
+              integral da pessoa.
+            </p>
+            <div class="card-extra">Pode apoiar projetos pedagógicos e de formação docente.</div>
+            <div class="card-botoes">
+              <a href="#" class="btn-primario">Ver curso</a>
+              <a href="https://www.youtube.com/" target="_blank" class="btn-secundario">Ver playlist</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="voltar-topo"><a href="#topo">↑ Voltar ao topo</a></div>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="index.html#professores">Professores</a>
+        <a href="cursos.html">Cursos</a>
+        <a href="index.html#contato">Contato</a>
+      </div>
+      <p>&copy; <span id="ano-atual"></span> Escola de Filosofia &amp; Teologia Immortalis.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("ano-atual").textContent = new Date().getFullYear();
+
+    const toggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+    if (toggle) {
+      toggle.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+      });
+    }
+  </script>
+</body>
+</html>

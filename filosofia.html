@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini Aulas de Filosofia | Escola Immortalis</title>
+
+  <!-- Fontes -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --marrom-escuro: #4d1f15;
+      --marrom-meio: #6a2a1d;
+      --bege-claro: #f4e8cf;
+      --bege-medio: #e2d0a7;
+      --verde: #365c3b;
+      --texto: #222222;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Lato", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--marrom-escuro);
+      color: var(--texto);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* HEADER */
+    header {
+      background-color: var(--marrom-escuro);
+      color: #fff;
+      border-bottom: 3px solid var(--bege-medio);
+    }
+
+    .top-bar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.8rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 3px solid var(--bege-medio);
+      background-color: #fff;
+      background-image: url("img/logo.png");
+      background-position: center;
+      background-size: cover;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      font-family: "Playfair Display", serif;
+    }
+
+    .brand-text small {
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--bege-medio);
+    }
+
+    .brand-text span {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      position: relative;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.5rem;
+      list-style: none;
+    }
+
+    .nav-links li a {
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      background: linear-gradient(to bottom, #8a1f1f, #5d1414);
+      border: 1px solid #f0e3c5;
+      color: #f9f4e8;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .nav-links li a:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      background: linear-gradient(to bottom, #a12323, #6b1515);
+    }
+
+    .nav-links li a.active {
+      background: linear-gradient(to bottom, #26542f, #1b3d21);
+      border-color: #d2e0c6;
+    }
+
+    .user-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid #f0e3c5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      background-color: #345035;
+      color: #f9f4e8;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      border: 1px solid #f0e3c5;
+      padding: 5px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background-color: #f0e3c5;
+    }
+
+    /* HERO INTERNO */
+    .hero-interno {
+      background-image: url("img/banner-livros.jpg");
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      padding: 2.5rem 1rem;
+    }
+
+    .hero-interno::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(77, 31, 21, 0.8),
+        rgba(77, 31, 21, 0.9)
+      );
+    }
+
+    .hero-interno-conteudo {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+      color: #fdf7eb;
+    }
+
+    .breadcrumb {
+      font-size: 0.85rem;
+      margin-bottom: 0.8rem;
+      color: #f4e8cf;
+    }
+
+    .breadcrumb a {
+      border-bottom: 1px solid transparent;
+    }
+
+    .breadcrumb a:hover {
+      border-bottom-color: #f4e8cf;
+    }
+
+    .hero-interno-titulo {
+      font-family: "Playfair Display", serif;
+      font-size: 2rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-interno-sub {
+      font-family: "Crimson Text", serif;
+      font-size: 1.1rem;
+      max-width: 650px;
+      line-height: 1.6;
+      color: #f7e4c9;
+    }
+
+    /* LISTA DE AULAS */
+    main {
+      background-color: var(--bege-claro);
+      min-height: 60vh;
+      padding: 2.5rem 1rem 3rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .secao-topo {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .secao-topo h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.6rem;
+      color: var(--marrom-meio);
+    }
+
+    .secao-descricao {
+      max-width: 620px;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: #3e3a32;
+    }
+
+    .filtro {
+      font-size: 0.9rem;
+      background-color: #efe0b8;
+      border-radius: 999px;
+      padding: 0.4rem 0.9rem;
+      border: 1px solid #dcc48f;
+    }
+
+    .grade-aulas {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card-aula {
+      background-color: #fdf7eb;
+      border-radius: 14px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #e2d0a7;
+    }
+
+    .card-thumb {
+      position: relative;
+      height: 160px;
+      overflow: hidden;
+      background-color: #000;
+    }
+
+    .card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.2s ease;
+    }
+
+    .card-aula:hover .card-thumb img {
+      transform: scale(1.03);
+    }
+
+    .card-thumb::after {
+      content: "▶";
+      position: absolute;
+      right: 12px;
+      bottom: 8px;
+      font-size: 1.4rem;
+      color: #fdf7eb;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    .card-conteudo {
+      padding: 0.9rem 1rem 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .card-titulo {
+      font-family: "Playfair Display", serif;
+      font-size: 1.05rem;
+      color: #3b241b;
+    }
+
+    .card-meta {
+      font-size: 0.8rem;
+      color: #7a6b52;
+    }
+
+    .card-descricao {
+      font-size: 0.9rem;
+      line-height: 1.45;
+      color: #463b2b;
+      flex: 1;
+    }
+
+    .card-botao {
+      margin-top: 0.6rem;
+      display: inline-block;
+      align-self: flex-start;
+      padding: 0.5rem 1.1rem;
+      font-size: 0.9rem;
+      border-radius: 999px;
+      border: 1px solid #345035;
+      background-color: #365c3b;
+      color: #f7f0de;
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    }
+
+    .card-botao:hover {
+      background-color: #417749;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    /* MODAL / POPUP DE VÍDEO */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.75);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      z-index: 999;
+    }
+
+    .modal-overlay.show {
+      display: flex;
+    }
+
+    .modal-content {
+      background-color: #1c1c1c;
+      border-radius: 16px;
+      max-width: 960px;
+      width: 100%;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+      position: relative;
+      padding: 0.75rem;
+      border: 1px solid #c8b28d;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 6px;
+      right: 10px;
+      background: transparent;
+      border: none;
+      color: #fdf7eb;
+      font-size: 1.8rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .modal-video-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background-color: #000;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .modal-video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .modal-legenda {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: #e0d4b3;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--marrom-escuro);
+      color: #f6e6c6;
+      padding: 1.5rem 1rem 2rem;
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: center;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-links a {
+      border-bottom: 1px solid transparent;
+      padding-bottom: 1px;
+    }
+
+    .footer-links a:hover {
+      border-bottom-color: #f6e6c6;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 900px) {
+      .grade-aulas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .menu-toggle { display: flex; }
+      .nav-links {
+        position: absolute;
+        top: 110%;
+        right: 0;
+        flex-direction: column;
+        background-color: #3c1810;
+        padding: 0.75rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+        display: none;
+      }
+      .nav-links.show { display: flex; }
+
+      .grade-aulas {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="top-bar">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true"></div>
+        <div class="brand-text">
+          <small>Escola</small>
+          <span>Immortalis</span>
+        </div>
+      </div>
+
+      <nav>
+        <button class="menu-toggle" aria-label="Abrir menu">
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-links">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="mini-aulas.html">Mini Aulas</a></li>
+          <li><a href="cursos.html">Cursos</a></li>
+          <li><a href="biblioteca.html">Biblioteca</a></li>
+          <li><a href="index.html#contato">Contato</a></li>
+        </ul>
+
+        <div class="user-icon" title="Área do aluno">
+          <span>👤</span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO INTERNO -->
+  <section class="hero-interno">
+    <div class="hero-interno-conteudo">
+      <div class="breadcrumb">
+        <a href="index.html">Início</a> &raquo; Mini Aulas de Filosofia
+      </div>
+      <h1 class="hero-interno-titulo">Mini Aulas de Filosofia</h1>
+      <p class="hero-interno-sub">
+        Encontros breves e profundos com a história da filosofia, seus conceitos
+        fundamentais e suas perguntas inesgotáveis.
+      </p>
+    </div>
+  </section>
+
+  <!-- LISTA DE AULAS -->
+  <main>
+    <div class="container">
+      <div class="secao-topo">
+        <div>
+          <h2>Aulas em destaque</h2>
+          <p class="secao-descricao">
+            Cada vídeo abaixo é uma mini aula independente. Clique em
+            <strong>“Assistir aula”</strong> para abrir um player em destaque
+            sem sair da página.
+          </p>
+        </div>
+        <div class="filtro">
+          Nível sugerido: Iniciantes &nbsp;|&nbsp; Duração média: 10–15 min
+        </div>
+      </div>
+
+      <div class="grade-aulas">
+        <!-- CARD 1 -->
+        <article class="card-aula">
+          <div class="card-thumb">
+            <!-- TROCAR VIDEO_ID_1 PELO ID REAL DO VÍDEO -->
+            <img src="https://img.youtube.com/vi/XzNmIyv2nR4/hqdefault.jpg" alt="Mini aula: O que é Filosofia?" />
+          </div>
+          <div class="card-conteudo">
+            <h3 class="card-titulo">Aula 001 - INTRODUÇÃO AO ESTILO DE “MINI AULAS”</h3>
+            <div class="card-meta">Série: Introdução | 12 min</div>
+            <p class="card-descricao">
+              Uma breve aproximação histórica e conceitual da pergunta clássica:
+              o que afinal significa filosofar?
+            </p>
+            <button class="card-botao" data-video-id="XzNmIyv2nR4">Assistir aula</button>
+          </div>
+        </article>
+
+        <!-- CARD 2 -->
+        <article class="card-aula">
+          <div class="card-thumb">
+            <img src="https://img.youtube.com/vi/4dp3kbD-x9k/hqdefault.jpg" alt="Mini aula: Sócrates e o cuidado de si" />
+          </div>
+          <div class="card-conteudo">
+            <h3 class="card-titulo">Aula 002 - Introdução ao Estudo Filosófico</h3>
+            <div class="card-meta">Filosofia Antiga | 15 min</div>
+            <p class="card-descricao">
+              A famosa máxima “Conhece-te a ti mesmo” e o papel da ironia socrática
+              como método de autoconhecimento.
+            </p>
+            <button class="card-botao" data-video-id="4dp3kbD-x9k">Assistir aula</button>
+          </div>
+        </article>
+
+        <!-- CARD 3 -->
+        <article class="card-aula">
+          <div class="card-thumb">
+            <img src="https://img.youtube.com/vi/baNxEedfsPw/hqdefault.jpg" alt="Mini aula: Platão e o mundo das ideias" />
+          </div>
+          <div class="card-conteudo">
+            <h3 class="card-titulo">Aula 003 - Cronologia analítica</h3>
+            <div class="card-meta">Filosofia Antiga | 18 min</div>
+            <p class="card-descricao">
+              Introdução ao pensamento platônico, o mito da caverna e a distinção
+              entre mundo sensível e inteligível.
+            </p>
+            <button class="card-botao" data-video-id="baNxEedfsPw">Assistir aula</button>
+          </div>
+        </article>
+
+        <!-- CARD 4 -->
+        <article class="card-aula">
+          <div class="card-thumb">
+            <img src="https://img.youtube.com/vi/kKoA_FwSpc0/hqdefault.jpg" alt="Mini aula: Aristóteles e a busca da virtude" />
+          </div>
+          <div class="card-conteudo">
+            <h3 class="card-titulo">Aula 004 - Período grego-romano pré-cristianismo: Tales de Mileto</h3>
+            <div class="card-meta">Ética | 17 min</div>
+            <p class="card-descricao">
+              O conceito de virtude, hábito e o caminho do meio como chave da
+              ética aristotélica.
+            </p>
+            <button class="card-botao" data-video-id="kKoA_FwSpc0">Assistir aula</button>
+          </div>
+        </article>
+
+        <!-- CARD 5 -->
+        <article class="card-aula">
+          <div class="card-thumb">
+            <img src="https://img.youtube.com/vi/0EJMJ9l2VyU/hqdefault.jpg" alt="Mini aula: Filosofia Medieval: fé e razão" />
+          </div>
+          <div class="card-conteudo">
+            <h3 class="card-titulo">Aula 005 - Tales de Mileto</h3>
+            <div class="card-meta">Filosofia Medieval | 14 min</div>
+            <p class="card-descricao">
+              Como pensadores medievais articularam a relação entre a fé cristã e
+              o uso rigoroso da razão.
+            </p>
+            <button class="card-botao" data-video-id="0EJMJ9l2VyU">Assistir aula</button>
+          </div>
+        </article>
+
+        <!-- CARD 6 -->
+        <article class="card-aula">
+          <div class="card-thumb">
+            <img src="https://img.youtube.com/vi/1nRpxPcNk2w/hqdefault.jpg" alt="Mini aula: Filosofia Moderna e o sujeito" />
+          </div>
+          <div class="card-conteudo">
+            <h3 class="card-titulo">Aula 006 - Anaximandro de Mileto (1)</h3>
+            <div class="card-meta">Filosofia Moderna | 19 min</div>
+            <p class="card-descricao">
+              Descartes, a dúvida e a emergência do sujeito moderno como ponto de
+              partida da reflexão filosófica.
+            </p>
+            <button class="card-botao" data-video-id="1nRpxPcNk2w">Assistir aula</button>
+          </div>
+        </article>
+
+        <!-- CARD 7 -->
+        <article class="card-aula">
+          <div class="card-thumb">
+            <img src="https://img.youtube.com/vi/i3I7ktM_ZXE/hqdefault.jpg" alt="Mini aula: Filosofia Moderna e o sujeito" />
+          </div>
+          <div class="card-conteudo">
+            <h3 class="card-titulo">Aula 007 - Anaximandro de Mileto (2)</h3>
+            <div class="card-meta">Filosofia Moderna | 19 min</div>
+            <p class="card-descricao">
+              Descartes, a dúvida e a emergência do sujeito moderno como ponto de
+              partida da reflexão filosófica.
+            </p>
+            <button class="card-botao" data-video-id="i3I7ktM_ZXE">Assistir aula</button>
+          </div>
+        </article>
+
+        <!-- CARD 8 -->
+        <article class="card-aula">
+          <div class="card-thumb">
+            <img src="https://img.youtube.com/vi/i3I7ktM_ZXE/hqdefault.jpg" alt="Mini aula: Filosofia Moderna e o sujeito" />
+          </div>
+          <div class="card-conteudo">
+            <h3 class="card-titulo">Aula 007 - Anaximandro de Mileto (2)</h3>
+            <div class="card-meta">Filosofia Moderna | 19 min</div>
+            <p class="card-descricao">
+              Descartes, a dúvida e a emergência do sujeito moderno como ponto de
+              partida da reflexão filosófica.
+            </p>
+            <button class="card-botao" data-video-id="i3I7ktM_ZXE">Assistir aula</button>
+          </div>
+        </article>
+
+        <!-- CARD 9 -->
+        <article class="card-aula">
+          <div class="card-thumb">
+            <img src="https://img.youtube.com/vi/i3I7ktM_ZXE/hqdefault.jpg" alt="Mini aula: Filosofia Moderna e o sujeito" />
+          </div>
+          <div class="card-conteudo">
+            <h3 class="card-titulo">Aula 007 - Anaximandro de Mileto (2)</h3>
+            <div class="card-meta">Filosofia Moderna | 19 min</div>
+            <p class="card-descricao">
+              Descartes, a dúvida e a emergência do sujeito moderno como ponto de
+              partida da reflexão filosófica.
+            </p>
+            <button class="card-botao" data-video-id="i3I7ktM_ZXE">Assistir aula</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <!-- MODAL / POPUP DE VÍDEO -->
+  <div class="modal-overlay" id="video-modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-label="Player de vídeo">
+      <button class="modal-close" type="button" aria-label="Fechar">×</button>
+      <div class="modal-video-wrapper">
+        <iframe
+          id="video-iframe"
+          src=""
+          title="Mini aula de Filosofia"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="modal-legenda">
+        Clique no X ou fora da janela para fechar o player.
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="mini-aulas.html">Mini Aulas</a>
+        <a href="cursos.html">Cursos</a>
+        <a href="biblioteca.html">Biblioteca</a>
+        <a href="index.html#contato">Contato</a>
+      </div>
+      <p>&copy; <span id="ano-atual"></span> Escola de Filosofia &amp; Teologia Immortalis.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Ano no rodapé
+    document.getElementById("ano-atual").textContent = new Date().getFullYear();
+
+    // Menu mobile
+    const toggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+    if (toggle) {
+      toggle.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+      });
+    }
+
+    // Modal de vídeo
+    const modal = document.getElementById("video-modal");
+    const iframe = document.getElementById("video-iframe");
+    const closeBtn = document.querySelector(".modal-close");
+    const buttons = document.querySelectorAll(".card-botao[data-video-id]");
+
+    function abrirModal(videoId) {
+      const url = "https://www.youtube.com/embed/" + videoId + "?rel=0";
+      iframe.src = url;
+      modal.classList.add("show");
+      modal.setAttribute("aria-hidden", "false");
+    }
+
+    function fecharModal() {
+      iframe.src = ""; // limpa para parar o vídeo
+      modal.classList.remove("show");
+      modal.setAttribute("aria-hidden", "true");
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const videoId = btn.getAttribute("data-video-id");
+        if (videoId) {
+          abrirModal(videoId);
+        }
+      });
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener("click", fecharModal);
+    }
+
+    // Fecha ao clicar fora do conteúdo
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        fecharModal();
+      }
+    });
+
+    // Opcional: fechar com ESC
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal.classList.contains("show")) {
+        fecharModal();
+      }
+    });
+  </script>
+</body>
+</html>

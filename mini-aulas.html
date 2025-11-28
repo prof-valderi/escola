@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini Aulas | Escola Immortalis</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --marrom-escuro: #4d1f15;
+      --marrom-meio: #6a2a1d;
+      --bege-claro: #f4e8cf;
+      --bege-medio: #e2d0a7;
+      --verde: #365c3b;
+      --texto: #222222;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Lato", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--marrom-escuro);
+      color: var(--texto);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* HEADER */
+    header {
+      background-color: var(--marrom-escuro);
+      color: #fff;
+      border-bottom: 3px solid var(--bege-medio);
+    }
+
+    .top-bar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.8rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 3px solid var(--bege-medio);
+      background-color: #fff;
+      background-image: url("img/logo.png");
+      background-position: center;
+      background-size: cover;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      font-family: "Playfair Display", serif;
+    }
+
+    .brand-text small {
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--bege-medio);
+    }
+
+    .brand-text span {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      position: relative;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.5rem;
+      list-style: none;
+    }
+
+    .nav-links li a {
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      background: linear-gradient(to bottom, #8a1f1f, #5d1414);
+      border: 1px solid #f0e3c5;
+      color: #f9f4e8;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .nav-links li a:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      background: linear-gradient(to bottom, #a12323, #6b1515);
+    }
+
+    .nav-links li a.active {
+      background: linear-gradient(to bottom, #26542f, #1b3d21);
+      border-color: #d2e0c6;
+    }
+
+    .user-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid #f0e3c5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      background-color: #345035;
+      color: #f9f4e8;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      border: 1px solid #f0e3c5;
+      padding: 5px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background-color: #f0e3c5;
+    }
+
+    /* HERO */
+    .hero-interno {
+      background-image: url("img/banner-livros.jpg");
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      padding: 2.5rem 1rem 3.2rem;
+    }
+
+    .hero-interno::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(77, 31, 21, 0.8),
+        rgba(77, 31, 21, 0.95)
+      );
+    }
+
+    .hero-interno-conteudo {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+      color: #fdf7eb;
+    }
+
+    .breadcrumb {
+      font-size: 0.85rem;
+      margin-bottom: 0.8rem;
+      color: #f4e8cf;
+    }
+
+    .breadcrumb a {
+      border-bottom: 1px solid transparent;
+    }
+
+    .breadcrumb a:hover {
+      border-bottom-color: #f4e8cf;
+    }
+
+    .hero-interno-titulo {
+      font-family: "Playfair Display", serif;
+      font-size: 2.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-interno-sub {
+      font-family: "Crimson Text", serif;
+      font-size: 1.1rem;
+      max-width: 650px;
+      line-height: 1.6;
+      color: #f7e4c9;
+    }
+
+    .hero-info {
+      margin-top: 1.2rem;
+      font-size: 0.9rem;
+      color: #f8e4c8;
+    }
+
+    .hero-info span {
+      display: inline-block;
+      margin-right: 0.8rem;
+    }
+
+    /* MAIN */
+    main {
+      background-color: var(--bege-claro);
+      padding: 2.5rem 1rem 3rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .bloco-metodologia {
+      background-color: #fdf7eb;
+      border-radius: 14px;
+      border: 1px solid #e2d0a7;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.18);
+      padding: 1.7rem 1.6rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .bloco-metodologia h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.6rem;
+      color: var(--marrom-meio);
+      margin-bottom: 0.75rem;
+    }
+
+    .bloco-metodologia p {
+      font-size: 0.96rem;
+      line-height: 1.8;
+      color: #3f3526;
+      margin-bottom: 0.75rem;
+    }
+
+    .bloco-metodologia ul {
+      margin-top: 0.6rem;
+      padding-left: 1.2rem;
+      font-size: 0.94rem;
+      color: #4b3b26;
+    }
+
+    .bloco-metodologia li {
+      margin-bottom: 0.35rem;
+    }
+
+    .bloco-metodologia strong {
+      color: var(--marrom-meio);
+    }
+
+    .subtitulo-mini {
+      font-family: "Playfair Display", serif;
+      font-size: 1.25rem;
+      color: var(--marrom-meio);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .grade-disciplinas {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card-disciplina {
+      background-color: #fdf7eb;
+      border-radius: 14px;
+      border: 1px solid #e2d0a7;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.18);
+      padding: 1.3rem 1.3rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .card-disciplina-titulo {
+      font-family: "Playfair Display", serif;
+      font-size: 1.2rem;
+      color: #3b241b;
+    }
+
+    .card-disciplina-texto {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #433728;
+    }
+
+    .card-disciplina-meta {
+      font-size: 0.85rem;
+      color: #7b6a51;
+    }
+
+    .card-disciplina-botoes {
+      margin-top: 0.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .btn-primario,
+    .btn-secundario {
+      display: inline-block;
+      padding: 0.45rem 1rem;
+      font-size: 0.85rem;
+      border-radius: 999px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+    }
+
+    .btn-primario {
+      background-color: #365c3b;
+      border-color: #365c3b;
+      color: #f7f0de;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+    }
+
+    .btn-primario:hover {
+      background-color: #417749;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    .btn-secundario {
+      background-color: #f1e1be;
+      border-color: #c9b07e;
+      color: #4b3a24;
+    }
+
+    .btn-secundario:hover {
+      background-color: #f7ebcf;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    }
+
+    .nota-final {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #5b4d36;
+      text-align: center;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--marrom-escuro);
+      color: #f6e6c6;
+      padding: 1.5rem 1rem 2rem;
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: center;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-links a {
+      border-bottom: 1px solid transparent;
+      padding-bottom: 1px;
+    }
+
+    .footer-links a:hover {
+      border-bottom-color: #f6e6c6;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 900px) {
+      .grade-disciplinas {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .menu-toggle { display: flex; }
+      .nav-links {
+        position: absolute;
+        top: 110%;
+        right: 0;
+        flex-direction: column;
+        background-color: #3c1810;
+        padding: 0.75rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+        display: none;
+      }
+      .nav-links.show { display: flex; }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="top-bar">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true"></div>
+        <div class="brand-text">
+          <small>Escola</small>
+          <span>Immortalis</span>
+        </div>
+      </div>
+
+      <nav>
+        <button class="menu-toggle" aria-label="Abrir menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="mini-aulas.html" class="active">Mini Aulas</a></li>
+          <li><a href="cursos.html">Cursos</a></li>
+          <li><a href="biblioteca.html">Biblioteca</a></li>
+          <li><a href="index.html#contato">Contato</a></li>
+        </ul>
+        <div class="user-icon"><span>👤</span></div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-interno">
+    <div class="hero-interno-conteudo">
+      <div class="breadcrumb">
+        <a href="index.html">Início</a> &raquo; Mini Aulas
+      </div>
+
+      <h1 class="hero-interno-titulo">Mini Aulas Immortalis</h1>
+      <p class="hero-interno-sub">
+        Encontros breves, claros e profundos em Filosofia e Teologia. Um formato
+        pensado para quem deseja formação contínua em pequenas doses.
+      </p>
+
+      <div class="hero-info">
+        <span><strong>Formato:</strong> vídeos curtos</span>
+        <span><strong>Foco:</strong> conceitos centrais, textos clássicos, questões fundamentais</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <main>
+    <div class="container">
+      <!-- BLOCO METODOLOGIA -->
+      <section class="bloco-metodologia">
+        <h2>Metodologia das Mini Aulas</h2>
+        <p>
+          As mini-aulas da Escola Immortalis nascem de uma convicção simples: é
+          possível tratar de temas profundos com clareza, em espaços de tempo
+          enxutos e regulares. Em vez de longas exposições, optamos por
+          <strong>blocos curtos</strong>, cada um dedicado a um conceito, autor
+          ou problema específico.
+        </p>
+        <p>
+          Isso permite que o estudante siga seu ritmo, retome conteúdos, faça
+          anotações e retorne aos vídeos sempre que necessário. As mini-aulas
+          também podem ser usadas como:
+        </p>
+        <ul>
+          <li>apoio para grupos de estudo em comunidades ou paróquias;</li>
+          <li>introdução a temas que depois serão aprofundados em cursos;</li>
+          <li>material de consulta rápida para educadores e agentes pastorais.</li>
+        </ul>
+        <p>
+          Ao longo das séries, buscamos sempre articular <strong>contexto
+          histórico</strong>, <strong>clareza conceitual</strong> e
+          <strong>aplicações para a vida</strong>, sem perder o rigor próprio da
+          reflexão filosófica e teológica.
+        </p>
+      </section>
+
+      <!-- BLOCO DISCIPLINAS -->
+      <section>
+        <h2 class="subtitulo-mini">Escolha a área das Mini Aulas</h2>
+
+        <div class="grade-disciplinas">
+          <!-- Filosofia -->
+          <article class="card-disciplina">
+            <div class="card-disciplina-titulo">Mini Aulas de Filosofia</div>
+            <div class="card-disciplina-meta">Conceitos, autores e problemas clássicos da filosofia.</div>
+            <p class="card-disciplina-texto">
+              Série de vídeos curtos que percorrem desde a filosofia antiga até
+              temas modernos, passando por Sócrates, Platão, Aristóteles e tantos
+              outros. Cada mini aula trabalha um recorte específico, permitindo
+              retomadas e conexões entre os encontros.
+            </p>
+            <div class="card-disciplina-botoes">
+              <a href="filosofia.html" class="btn-primario">Ver mini aulas de Filosofia</a>
+              <a href="cursos-filosofia.html" class="btn-secundario">Ver cursos de Filosofia</a>
+            </div>
+          </article>
+
+          <!-- Teologia -->
+          <article class="card-disciplina">
+            <div class="card-disciplina-titulo">Mini Aulas de Teologia</div>
+            <div class="card-disciplina-meta">Fé, Revelação, Escritura e vida cristã.</div>
+            <p class="card-disciplina-texto">
+              Vídeos breves sobre temas centrais da teologia cristã: Revelação,
+              Sagrada Escritura, Trindade, Cristologia, graça, sacramentos e
+              muito mais. Pensados tanto para formação pessoal quanto para uso
+              em grupos de estudo, catequese e pastoral.
+            </p>
+            <div class="card-disciplina-botoes">
+              <a href="teologia.html" class="btn-primario">Ver mini aulas de Teologia</a>
+              <a href="cursos.html#teologia" class="btn-secundario">Ver cursos de Teologia</a>
+            </div>
+          </article>
+
+          <!-- Futuras áreas / outras disciplinas (placeholder opcional) -->
+          <article class="card-disciplina">
+            <div class="card-disciplina-titulo">Futuras séries de Mini Aulas</div>
+            <div class="card-disciplina-meta">Espaço para novas áreas e temas.</div>
+            <p class="card-disciplina-texto">
+              Este espaço poderá abrigar, futuramente, séries especiais de mini
+              aulas em áreas específicas, como espiritualidade, leitura de
+              autores cristãos, humanidades em diálogo com a fé, entre outras
+              possibilidades.
+            </p>
+            <div class="card-disciplina-botoes">
+              <a href="index.html#contato" class="btn-secundario">Entre em contato para parcerias</a>
+            </div>
+          </article>
+
+          <!-- Sugestão de uso -->
+          <article class="card-disciplina">
+            <div class="card-disciplina-titulo">Como organizar seu estudo</div>
+            <div class="card-disciplina-meta">Sugestão de trilhas com mini aulas.</div>
+            <p class="card-disciplina-texto">
+              Você pode combinar as mini aulas com os cursos da Immortalis:
+              por exemplo, assistir às mini aulas introdutórias de Filosofia
+              Antiga e, em seguida, aprofundar com o curso
+              <em>Platão e o Platonismo</em>. O mesmo vale para Teologia:
+              use as mini aulas como porta de entrada para percursos mais
+              longos.
+            </p>
+            <div class="card-disciplina-botoes">
+              <a href="cursos.html" class="btn-primario">Explorar todos os cursos</a>
+            </div>
+          </article>
+        </div>
+
+        <p class="nota-final">
+          Dica: marque suas aulas favoritas, anote dúvidas e volte aos vídeos
+          sempre que precisar. A constância em pequenos passos costuma render
+          um grande caminho de formação.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="mini-aulas.html">Mini Aulas</a>
+        <a href="cursos.html">Cursos</a>
+        <li><a href="biblioteca.html">Biblioteca</a></li>
+        <a href="index.html#contato">Contato</a>
+      </div>
+      <p>&copy; <span id="ano-atual"></span> Escola de Filosofia &amp; Teologia Immortalis.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("ano-atual").textContent = new Date().getFullYear();
+
+    const toggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+    if (toggle) {
+      toggle.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+      });
+    }
+  </script>
+</body>
+</html>
