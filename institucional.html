@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre a Escola Immortalis | Institucional</title>
+
+  <!-- Fontes -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --marrom-escuro: #4d1f15;
+      --marrom-meio: #6a2a1d;
+      --bege-claro: #f4e8cf;
+      --bege-medio: #e2d0a7;
+      --bege-card: #fdf7eb;
+      --verde: #365c3b;
+      --verde-escuro: #26412a;
+      --texto: #222222;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Lato", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--marrom-escuro);
+      color: var(--texto);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* HEADER */
+    header {
+      background-color: var(--marrom-escuro);
+      color: #fff;
+      border-bottom: 3px solid var(--bege-medio);
+    }
+
+    .top-bar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.8rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 3px solid var(--bege-medio);
+      background-color: #fff;
+      background-image: url("img/logo.png");
+      background-position: center;
+      background-size: cover;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      font-family: "Playfair Display", serif;
+    }
+
+    .brand-text small {
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--bege-medio);
+    }
+
+    .brand-text span {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      position: relative;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.5rem;
+      list-style: none;
+    }
+
+    .nav-links li a {
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      background: linear-gradient(to bottom, #8a1f1f, #5d1414);
+      border: 1px solid #f0e3c5;
+      color: #f9f4e8;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .nav-links li a:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      background: linear-gradient(to bottom, #a12323, #6b1515);
+    }
+
+    .nav-links li a.active {
+      background: linear-gradient(to bottom, #26542f, #1b3d21);
+      border-color: #d2e0c6;
+    }
+
+    .user-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid #f0e3c5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      background-color: #345035;
+      color: #f9f4e8;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      border: 1px solid #f0e3c5;
+      padding: 5px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background-color: #f0e3c5;
+    }
+
+    @media (max-width: 768px) {
+      nav { position: relative; }
+      .menu-toggle { display: flex; }
+
+      .nav-links {
+        position: absolute;
+        top: 110%;
+        right: 0;
+        flex-direction: column;
+        background-color: #3c1810;
+        padding: 0.75rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+        display: none;
+      }
+
+      .nav-links.show { display: flex; }
+    }
+
+    /* HERO */
+    .hero-institucional {
+      background-color: var(--bege-claro);
+      padding: 2.5rem 1rem 2rem;
+      border-bottom: 4px solid var(--marrom-meio);
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero-text {
+      color: #4b3a24;
+    }
+
+    .hero-kicker {
+      font-size: 0.84rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #7b6342;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-title {
+      font-family: "Playfair Display", serif;
+      font-size: 2.1rem;
+      color: var(--marrom-meio);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-subtitle {
+      font-family: "Crimson Text", serif;
+      font-size: 1.15rem;
+      color: #4b3a24;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .hero-text p {
+      font-size: 0.98rem;
+      line-height: 1.7;
+      max-width: 640px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background-color: #f3dfb7;
+      border-radius: 999px;
+      padding: 0.35rem 0.9rem;
+      border: 1px solid #d0b27e;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #5b3b21;
+    }
+
+    .hero-badge span {
+      font-size: 1rem;
+    }
+
+    .hero-card {
+      background-color: #fdf7eb;
+      border-radius: 18px;
+      border: 1px solid var(--bege-medio);
+      padding: 1.4rem 1.6rem;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+      font-size: 0.92rem;
+      color: #4b3a24;
+    }
+
+    .hero-card strong {
+      color: var(--marrom-meio);
+    }
+
+    @media (max-width: 880px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* SEÇÃO FILOSOFIA */
+    .filosofia-section {
+      background-color: var(--bege-claro);
+      padding: 2.5rem 1rem 3rem;
+    }
+
+    .filosofia-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .sec-titulo {
+      font-family: "Playfair Display", serif;
+      font-size: 1.6rem;
+      color: var(--marrom-meio);
+      margin-bottom: 0.8rem;
+    }
+
+    .sec-texto p {
+      font-size: 0.98rem;
+      line-height: 1.8;
+      color: #4b3a24;
+      margin-bottom: 0.85rem;
+    }
+
+    .sec-texto ul {
+      margin: 0.4rem 0 0;
+      padding-left: 1.1rem;
+      color: #4b3a24;
+      font-size: 0.96rem;
+    }
+
+    .sec-texto li {
+      margin-bottom: 0.4rem;
+    }
+
+    .filosofia-citacao {
+      background-color: var(--bege-card);
+      border-radius: 18px;
+      border: 1px solid var(--bege-medio);
+      padding: 1.6rem 1.7rem;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+      font-family: "Crimson Text", serif;
+      color: #3b241b;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      position: relative;
+    }
+
+    .filosofia-citacao::before {
+      content: "❝";
+      position: absolute;
+      top: 12px;
+      left: 14px;
+      font-size: 2rem;
+      color: #c2a36f;
+      opacity: 0.7;
+    }
+
+    .filosofia-citacao small {
+      display: block;
+      margin-top: 0.9rem;
+      font-size: 0.9rem;
+      font-style: italic;
+      color: #6a5637;
+    }
+
+    @media (max-width: 880px) {
+      .filosofia-inner {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+
+    /* FUNDADOR */
+    .fundador-section {
+      background-color: #f0e4c9;
+      padding: 2.8rem 1rem 3rem;
+      border-top: 3px solid var(--marrom-meio);
+      border-bottom: 3px solid var(--marrom-meio);
+    }
+
+    .fundador-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .fundador-foto {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 4px solid var(--bege-medio);
+      background-color: #fff;
+      background-image: url("img/fundador.jpg"); /* use uma foto se quiser */
+      background-position: center;
+      background-size: cover;
+      margin: 0 auto 1rem;
+    }
+
+    .fundador-card {
+      background-color: var(--bege-card);
+      border-radius: 18px;
+      border: 1px solid var(--bege-medio);
+      padding: 1.8rem 1.9rem;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.16);
+      color: #4b3a24;
+      font-size: 0.97rem;
+      line-height: 1.8;
+    }
+
+    .fundador-card h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.3rem;
+      color: var(--marrom-meio);
+    }
+
+    .fundador-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      color: #6b5333;
+    }
+
+    .fundador-card p { margin-bottom: 0.7rem; }
+
+    .fundador-taglinha {
+      font-family: "Crimson Text", serif;
+      font-style: italic;
+      margin-bottom: 0.7rem;
+    }
+
+    .fundador-links {
+      margin-top: 0.8rem;
+      font-size: 0.9rem;
+    }
+
+    .fundador-links a {
+      color: var(--verde-escuro);
+      text-decoration: underline;
+      text-decoration-style: dotted;
+    }
+
+    @media (max-width: 900px) {
+      .fundador-inner {
+        grid-template-columns: minmax(0,1fr);
+        text-align: center;
+      }
+      .fundador-card {
+        text-align: left;
+      }
+    }
+
+    /* FAQ */
+    .faq-section {
+      background-color: var(--bege-claro);
+      padding: 2.6rem 1rem 3.2rem;
+    }
+
+    .faq-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .faq-inner h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.5rem;
+      color: var(--marrom-meio);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+      gap: 1.4rem 1.8rem;
+    }
+
+    .faq-item {
+      background-color: var(--bege-card);
+      border-radius: 14px;
+      border: 1px solid var(--bege-medio);
+      padding: 1rem 1.2rem;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+    }
+
+    .faq-pergunta {
+      font-weight: 700;
+      font-size: 0.97rem;
+      color: #3b241b;
+      margin-bottom: 0.4rem;
+    }
+
+    .faq-resposta {
+      font-size: 0.93rem;
+      color: #4b3a24;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 800px) {
+      .faq-grid { grid-template-columns: minmax(0,1fr); }
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--marrom-escuro);
+      color: #f6e6c6;
+      padding: 1.5rem 1rem 2rem;
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: center;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-links a {
+      border-bottom: 1px solid transparent;
+      padding-bottom: 1px;
+    }
+
+    .footer-links a:hover {
+      border-bottom-color: #f6e6c6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="top-bar">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true"></div>
+        <div class="brand-text">
+          <small>Escola</small>
+          <span>Immortalis</span>
+        </div>
+      </div>
+
+      <nav>
+        <button class="menu-toggle" aria-label="Abrir menu">
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-links">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="mini-aulas.html">Mini Aulas</a></li>
+          <li><a href="cursos.html">Cursos</a></li>
+          <li><a href="biblioteca.html">Biblioteca</a></li>
+          <li><a href="institucional.html" class="active">Institucional</a></li>
+          <li><a href="index.html#contato">Contato</a></li>
+        </ul>
+
+        <div class="user-icon"><span>👤</span></div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO INSTITUCIONAL -->
+  <section class="hero-institucional">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-kicker">Sobre a Escola</div>
+        <h1 class="hero-title">Escola de Filosofia &amp; Teologia Immortalis</h1>
+        <p class="hero-subtitle">
+          Um espaço de estudo contínuo em filosofia e teologia, pensado para quem
+          deseja aprofundar a fé e a razão em diálogo constante.
+        </p>
+        <p>
+          A Escola Immortalis se dedica principalmente ao ensino da filosofia e da
+          teologia, reunindo conteúdos em forma de mini-aulas e cursos que seguem
+          uma linha de aprofundamento progressivo, em vez de uma grade fechada de
+          disciplinas. O objetivo é permitir que o estudante acompanhe o
+          desenvolvimento dos temas ao longo do tempo, com liberdade para retomar,
+          revisar e avançar conforme o próprio ritmo.
+        </p>
+      </div>
+
+      <div>
+        <div class="hero-card">
+          <div class="hero-badge">
+            <span>✶</span>
+            <span>Formação integral</span>
+          </div>
+          <p style="margin-top:0.9rem;">
+            A proposta da Escola Immortalis é unir <strong>seriedade acadêmica</strong> e
+            <strong>fidelidade à tradição cristã</strong>, sem perder de vista os desafios
+            do mundo atual. Filosofia e teologia são tratadas não como curiosidades
+            intelectuais, mas como caminhos para compreender a verdade sobre Deus,
+            o ser humano e a história.
+          </p>
+          <p style="margin-top:0.8rem;">
+            A escola nasce do desejo de oferecer materiais acessíveis, estruturados e
+            aprofundados para estudantes, agentes pastorais, pesquisadores e toda
+            pessoa interessada em pensar a própria fé com rigor e honestidade.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILOSOFIA DA ESCOLA -->
+  <section class="filosofia-section">
+    <div class="filosofia-inner">
+      <div class="sec-texto">
+        <h2 class="sec-titulo">Nossa filosofia de ensino</h2>
+        <p>
+          A Escola Immortalis entende o estudo como um caminho longo, feito de
+          pequenas etapas. Por isso, os conteúdos são organizados em mini-aulas e
+          cursos que vão sendo disponibilizados progressivamente, permitindo ao
+          aluno voltar ao material, rever conceitos e acompanhar o amadurecimento
+          das reflexões.
+        </p>
+        <p>
+          Algumas características centrais da proposta:
+        </p>
+        <ul>
+          <li>
+            <strong>Centralidade dos clássicos</strong> – autores da tradição
+            filosófica e teológica são estudados com respeito ao contexto e à
+            profundidade original.
+          </li>
+          <li>
+            <strong>Unidade entre fé e razão</strong> – o pensamento cristão é
+            articulado com a filosofia, sem reducionismos, buscando sempre a
+            verdade.
+          </li>
+          <li>
+            <strong>Honestidade intelectual</strong> – os temas são tratados com
+            clareza, sem promessas fáceis, convidando o estudante a um contato
+            real com os problemas filosóficos e teológicos.
+          </li>
+          <li>
+            <strong>Continuidade</strong> – em vez de cursos isolados e
+            desconectados, os conteúdos formam um percurso, no qual um tema
+            prepara o seguinte.
+          </li>
+        </ul>
+      </div>
+
+      <aside class="filosofia-citacao">
+        A filosofia e a teologia, quando vividas com seriedade, não são apenas
+        disciplinas de estudo, mas um modo de permanecer diante da verdade,
+        permitindo que ela julgue, purifique e ilumine a própria vida.
+        <small>Perspectiva da Escola Immortalis sobre o estudo filosófico-teológico.</small>
+      </aside>
+    </div>
+  </section>
+
+  <!-- FUNDADOR -->
+  <section class="fundador-section">
+    <div class="fundador-inner">
+      <div style="text-align:center;">
+        <div class="fundador-foto" aria-hidden="true"></div>
+        <p class="fundador-taglinha">
+          “A fidelidade à própria consciência já é um início.”
+        </p>
+      </div>
+
+      <div class="fundador-card">
+        <h2>Fundador da Escola Immortalis</h2>
+        <h3>Prof. Valderi da Silva</h3>
+
+        <p>
+          A Escola Immortalis foi fundada pelo
+          <strong>professor Valderi da Silva</strong>, bacharel em Filosofia e em
+          Teologia, com formação complementar em pós-graduação em Filosofia geral
+          e experiência na docência, na produção de textos e na condução de grupos
+          de estudo em ambiente acadêmico e eclesial. :contentReference[oaicite:0]{index=0}
+        </p>
+
+        <p>
+          Desde 2002, Valderi compartilha na internet reflexões, críticas e
+          análises sobre temas diversos, especialmente nos campos da
+          <strong>teologia</strong>, da <strong>filosofia</strong> e da
+          <strong>literatura</strong>, concentrando-se numa abordagem que une
+          rigor conceitual e sensibilidade pastoral. :contentReference[oaicite:1]{index=1}
+        </p>
+
+        <p>
+          Como fundador e principal responsável pelos conteúdos da Escola
+          Immortalis, o professor acompanha o planejamento dos cursos, a seleção
+          de bibliografia e a produção das mini-aulas, buscando sempre a unidade
+          entre tradição e atualidade, reflexão e vida cristã concreta.
+        </p>
+
+        <div class="fundador-links">
+          <p>
+            Para conhecer mais sobre o trabalho do professor e sua trajetória,
+            acesse o site pessoal:
+            <a href="https://www.valderi.com.br" target="_blank" rel="noopener">
+              www.valderi.com.br
+            </a>
+            .
+          </p>
+          <p>
+            O currículo acadêmico completo está disponível na plataforma Lattes:
+            <a href="http://lattes.cnpq.br/2221465230465176" target="_blank" rel="noopener">
+              Currículo Lattes de Valderi da Silva
+            </a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="faq-inner">
+      <h2>Perguntas frequentes (FAQ)</h2>
+
+      <div class="faq-grid">
+        <div class="faq-item">
+          <div class="faq-pergunta">1. A Escola Immortalis é uma instituição formal de ensino?</div>
+          <div class="faq-resposta">
+            A Escola Immortalis é um projeto de formação livre em filosofia e teologia,
+            voltado à difusão de conteúdos e percursos de estudo. Não se trata de uma
+            faculdade ou instituto oficialmente reconhecido pelo MEC, mas de um espaço
+            formativo complementar.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-pergunta">2. Qual a diferença entre mini-aulas e cursos?</div>
+          <div class="faq-resposta">
+            As <strong>mini-aulas</strong> são encontros mais curtos, focados em temas
+            específicos, muitas vezes introdutórios ou explicativos. Já os
+            <strong>cursos</strong> reúnem várias aulas em sequência, formando um
+            percurso mais estruturado sobre determinado assunto (por exemplo,
+            “Fundamentos da Filosofia” ou “Filosofia Política”). :contentReference[oaicite:2]{index=2}
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-pergunta">3. Preciso acompanhar tudo em tempo real?</div>
+          <div class="faq-resposta">
+            Não. Os conteúdos em vídeo são pensados para serem acessados de forma
+            assíncrona, permitindo que o aluno organize seus horários de estudo. Em
+            alguns casos, podem ocorrer encontros ao vivo ou aulas magnas, que serão
+            divulgados com antecedência.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-pergunta">4. A Escola oferece certificados?</div>
+          <div class="faq-resposta">
+            Alguns cursos poderão oferecer certificação de participação ou conclusão,
+            especialmente quando organizados em parceria com outras iniciativas
+            acadêmicas ou pastorais. Sempre que um curso contar com certificado,
+            essa informação será explicitada na página de apresentação do curso.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-pergunta">5. Os conteúdos são pagos?</div>
+          <div class="faq-resposta">
+            Há conteúdos totalmente gratuitos e outros vinculados a cursos com valor
+            próprio ou modalidades de colaboração. A intenção é manter uma base
+            acessível de formação gratuita, ao mesmo tempo em que alguns percursos
+            mais extensos ajudam a sustentar o trabalho e a produção de novos
+            materiais. :contentReference[oaicite:3]{index=3}
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-pergunta">6. Como posso entrar em contato para dúvidas ou parcerias?</div>
+          <div class="faq-resposta">
+            As informações de contato estão disponíveis na página inicial da Escola.
+            Em geral, o caminho principal é o e-mail de suporte e os canais diretos
+            de mensagem (WhatsApp e Telegram), que podem ser usados tanto para
+            esclarecer dúvidas sobre os cursos quanto para propor atividades,
+            grupos de estudo ou parcerias institucionais.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="mini-aulas.html">Mini Aulas</a>
+        <a href="cursos.html">Cursos</a>
+        <a href="biblioteca.html">Biblioteca</a>
+        <a href="index.html#contato">Contato</a>
+      </div>
+      <p>&copy; <span id="ano-atual"></span> Escola de Filosofia &amp; Teologia Immortalis.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Ano no rodapé
+    document.getElementById("ano-atual").textContent = new Date().getFullYear();
+
+    // Menu mobile
+    const toggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+    if (toggle && navLinks) {
+      toggle.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+      });
+    }
+  </script>
+</body>
+</html>
