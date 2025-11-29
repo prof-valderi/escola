@@ -442,8 +442,25 @@
         border-radius: 10px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
         display: none;
+        z-index: 9999; /* >>> garante que fica acima das faixas */
+        min-width: 210px;      /* menu um pouco mais largo */
       }
-      .nav-links.show { display: flex; }
+    
+      .nav-links.show {
+        display: flex;
+      }
+    
+      /* AQUI vem o espaçamento entre os botões */
+      .nav-links li + li {
+        margin-top: 0.45rem;   /* distância entre um “pílula” e outra */
+      }
+    
+      .nav-links li a {
+        display: block;
+        width: 100%;
+        text-align: left;      /* ou center, se preferir */
+        padding: 0.55rem 0.9rem;
+      }
 
       .grade-cursos {
         grid-template-columns: 1fr;
@@ -771,5 +788,6 @@
   </script>
 </body>
 </html>
+
 
 
