@@ -784,10 +784,21 @@
           mostrarPensamento(indiceAtual);
         });
       }
+      
+        document.addEventListener("contextmenu", e => e.preventDefault());
+        document.onkeydown = function(e) {
+            if (e.key === "F12" || 
+               (e.ctrlKey && e.key === "u") || 
+               (e.ctrlKey && e.shiftKey && e.key === "I")) {
+                return false;
+      }
+  };
+
     });
   </script>
 </body>
 </html>
+
 
 
 
